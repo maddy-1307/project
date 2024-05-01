@@ -1,0 +1,77 @@
+.navbar {
+    display: flex; /* Make navbar items display in a row */
+    justify-content: space-between; /* Space items evenly along the main axis */
+    align-items: center; /* Center items vertically */
+    padding: 10px 20px; /* Add padding for spacing */
+  }
+  
+  .logo {
+    margin-right: 20px; /* Add margin to separate logo from nav links */
+  }
+  .navLinks ul {
+    border-radius: 2rem;
+    border: black0.1rem solid;
+    display:  flex;
+    flex-direction: row;
+    gap: 1rem;
+    list-style-type: none; /* Remove bullets from list */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+  
+  
+  .dropdownContent {
+    display: flex; /* Display dropdown links in a row */
+    flex-direction: column; /* Stack links vertically */
+  }
+  
+  .overlay {
+    position: fixed; /* Position overlay fixed to cover entire screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 999; /* Ensure overlay appears above other content */
+  }
+
+  .divbodyContainer {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: flex-start; /* Vertically center the content */
+    height: 100vh; /* Take up the full height of the viewport */
+  }
+  
+  .divbody {
+    text-align: left; /* Align the text to the left within the div */
+    max-width: 400px; /* Optional: Set a maximum width for the content */
+    padding: 20px; /* Optional: Add padding to the content */
+  }
+  .dooted{
+    height: 200px;
+    width:500px;
+    border: black 0.1rem dotted;
+  }
+  
+  .btncont {
+    height: 30px;
+    width: 100px;
+    margin-top: 10px; /* Add some spacing between the input and the button */
+    background-color: rgb(235, 61, 22);
+    color: white;
+    border-radius: 5px;
+    border-color: white;
+
+    max-resolution: 0;
+   
+  }
+  .dropzone{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 400px;
+    border: 2px dashed rgb(117,112,112);
+    padding: 20px;
+  }

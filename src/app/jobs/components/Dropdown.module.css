@@ -1,0 +1,49 @@
+/* Dropdown toggle button */
+.dropdown-toggle {
+  padding: 8px 12px;
+  border: 1px solid #ccc; /* Add border to the dropdown toggle button */
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  display: none;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  background-color: #fff;
+  border: 1px solid #ccc; /* Add border to the dropdown menu */
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  list-style-type:none ;
+}
+
+/* Dropdown menu items */
+.dropdown-menu li {
+  background-color: white;
+  border-bottom: 1px solid #ccc; /* Add border to separate menu items */
+  padding: 8px 12px;
+  cursor: pointer;
+  list-style-type: none;
+  padding-right: 5px;
+
+}
+
+/* Remove bullet points from list items */
+.dropdown-menu li:before {
+  content: none;
+}
+
+/* Dropdown menu items hover */
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}

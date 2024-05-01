@@ -1,95 +1,127 @@
+'use client'
+
 import Image from "next/image";
-import styles from "./page.module.css";
+import pagestyles from "./page.module.css";
+import styles from './styless.module.css'
+import profile from '../../public/Testlify.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChild, faUser ,faCloudUpload } from '@fortawesome/free-solid-svg-icons';
+import { useState} from "react";
+import { useRouter } from "next/navigation";
 
-export default function Home() {
+
+
+export default function LandPage() {
+  const router= useRouter();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
+  };
+
+  const DragDropFiles = () => {
+    const [files, setFiles] = useState(null);
+    const handleDragOver=(event)=>{
+      event.preventDefault();
+
+    };
+    const handleDrop=(event)=>{
+      event.preventDefault();
+      console.log(event.dataTransfer.files)
+    }
+    const handleUpload=()=>{}
+    if(files) return(
+      <div>
+        <ul>
+          {
+            Array.from(files).map((file,idx)=><li key={idx}>{file.name}</li>)
+          }
+        </ul>
+       
+      </div>
+    )
+    return (
+      <>
+        {!files && (
+          <div 
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}>
+            <div>
+              <FontAwesomeIcon icon={faCloudUpload} />
+            </div>
+            <h4>Upload Resume</h4>
+            <br />
+            <h8>Max. file size: 4MB (only .pdf, .doc files are supported)</h8>
+          </div>
+        )}
+      </>
+    );
+  };
+
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main >
+    <nav id="desktop-nav" className={styles.navbar}> {/* Apply navbar class */}
+        <div className={styles.logo}> {/* Apply logo class */}
+          <Image
+            src={profile}
+            height={100}
+            width={100}
+          />
         </div>
-      </div>
+        <div className={styles.navLinks}> {/* Apply navLinks class */}
+          <ul > {/* Remove dots by default */}
+            <li>
+              <a href="#">
+                <FontAwesomeIcon icon={faChild} />
+              </a>
+            </li>
+            <li className="dropdown">
+              <div onClick={toggleDropdown}>
+                <FontAwesomeIcon icon={faUser} />
+                {isDropdownOpen && (
+                  <div className={styles.dropdownContent}> {/* Apply dropdownContent class */}
+                    <div> {/* Wrap each link in its own div */}
+                      <button>Abhishek</button>
+                    </div>
+                    <div>
+                      <button>LogOut</button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      {/* Close dropdown when clicking outside */}
+      {isDropdownOpen && (
+        <div className={styles.overlay} onClick={closeDropdown}>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        </div>
+      )}
+         
+         <div className={styles.divbodyContainer}>
+  <div className={styles.divbody}>
+    <h3>Hi Abhishek!</h3>
+    <h5>Welcome to Testlify! Let's get started</h5>
+    <h6>LinkedIn Profile Url</h6>
+    <input type="text"></input>
+    <h6>Resume</h6>
+   
+        <div className={styles.dropzone}>
+         < DragDropFiles/>
+        
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+    </div>
+    <br></br>
+    <button className={styles.btncont} onClick={()=>{router.push("/home"), handleUpload} }> Continue</button>
+  </div>
+</div>
     </main>
   );
 }
